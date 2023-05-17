@@ -1,0 +1,167 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(../images/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+header{
+    background-color: rgb(218, 131, 166);
+    height: 2rem;
+    width: 100%;
+}
+
+.container_1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    max-height: 58vh;
+}
+.container_2{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+    margin-top: 0.5rem;
+}
+
+.logo{
+    margin-top: 0;
+    padding: 0;
+    height: 1.3rem;
+}
+
+h1{
+    padding: 0.5rem;
+}
+
+h2{
+    padding: 0.5rem;
+}
+
+img {
+    height: 12rem;
+    padding: 1rem;
+    margin-left: 10%;
+}
+
+footer{
+    background-color: rgb(218, 131, 166);
+    height: 2rem;
+    width: 100%;    
+    display: flex;
+    direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* corresponde a Home*/
+.portada{
+    width: 60%;
+    height: 16rem;
+    padding: 2rem;
+    margin: 0;
+}
+
+/* corresponde a Home*/
+.image2{
+    margin-top: 0;
+    height: 12rem;
+}
+
+/*corresponde a Home*/
+.container_3{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/*corresponde a Home*/
+.text1{
+    width: 300px;
+}
+
+/*corresponde a Benefits and Tips*/
+.container_4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 39.4vh;
+}
+
+/*corresponde a About Us*/
+.container_4_1{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+}
+
+/*corresponde a About Us*/
+.text2{
+    margin-left: 1rem;
+    width: 300px;
+}
+
+/*corresponde a About Us*/
+.guys {
+    width: 17rem;
+}
+
+/*corresponde a Contact*/
+.playing {
+    height: 25rem;
+    padding: 1rem;
+    margin: 0;
+}
+
+/*corresponde a Contact*/
+.container_5{
+    display: flex;
+    direction: row;
+    align-items: end;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding: 1rem;
+}
+
+/*corresponde a Contact*/
+.container_6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height: 81.3vh;
+}
+
+/*corresponde a Information*/
+.table_information{
+    margin: 3rem;
+    text-align: center;
+    width: 500px;
+    height: 63vh;
+}
+
+/*corresponde a Benefits and Tips*/
+.list
+{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 200px;
+    margin-left: 30px;
+}
+
