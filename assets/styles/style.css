@@ -15,8 +15,12 @@ body{
 
 header{
     background-color: rgb(218, 131, 166);
-    height: 2rem;
+    min-height: 5vh;
     width: 100%;
+}
+
+main{
+    min-height: 90vh;
 }
 
 .container_1{
@@ -24,14 +28,24 @@ header{
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    max-height: 58vh;
 }
+
 .container_2{
     display: flex;
     flex-direction: row;
+}
+
+.links{
+    margin-left:35px
+}
+
+.container_2_1{
+    display: flex;
+    flex-direction: row;
     align-items: start;
-    justify-content: space-evenly;
     margin-top: 0.5rem;
+    justify-items: start;
+    justify-content: space-around;
 }
 
 .logo{
@@ -51,12 +65,11 @@ h2{
 img {
     height: 12rem;
     padding: 1rem;
-    margin-left: 10%;
 }
 
 footer{
     background-color: rgb(218, 131, 166);
-    height: 2rem;
+    min-height: 5vh;
     width: 100%;    
     display: flex;
     direction: column;
@@ -66,7 +79,7 @@ footer{
 
 /* corresponde a Home*/
 .portada{
-    width: 60%;
+    width: 600px;
     height: 16rem;
     padding: 2rem;
     margin: 0;
@@ -76,15 +89,16 @@ footer{
 .image2{
     margin-top: 0;
     height: 12rem;
+    margin-left: 4rem;
 }
 
 /*corresponde a Home*/
 .container_3{
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
 }
 
 /*corresponde a Home*/
@@ -105,9 +119,8 @@ footer{
 .container_4_1{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-
 }
 
 /*corresponde a About Us*/
@@ -144,7 +157,6 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    min-height: 81.3vh;
 }
 
 /*corresponde a Information*/
@@ -153,6 +165,13 @@ footer{
     text-align: center;
     width: 500px;
     height: 63vh;
+    border: 1px black solid;
+    border-collapse: separate;
+}
+
+td{
+    border: 1px black solid;
+    border-collapse: separate;
 }
 
 /*corresponde a Benefits and Tips*/
@@ -165,3 +184,214 @@ footer{
     margin-left: 30px;
 }
 
+/*corresponde a Raffle*/
+.container_7{
+    margin: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.container_7_1{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    padding-left: 0;
+}
+
+.option{
+    display: flex;
+    flex-direction: column;
+}
+
+.option_1{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: start;
+    padding:0.3rem;
+    font-size: 12px;
+
+}
+
+.cont{
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    margin-left: 25px;
+    height: 20px;
+}
+
+.msg{
+    padding: 0.3rem;
+}
+
+.container_7_2{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+iframe{
+    height: 250px;
+    width: 300px;
+    margin-top: 1rem;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px){
+
+    .container_2_1{
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 0.2rem;
+        min-height: 11vh;
+    }
+
+    .container_2{
+        margin-top: 0.2rem;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .links{
+        margin: 1px;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    main{
+        min-height: 83vh;
+    }
+
+    .main_{
+        min-height: 71.7vh;
+    }
+
+    .container_3{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .image2{
+        margin:0;
+        margin-top: 1rem;
+        width: 70%;
+        height: 160px;
+    }
+
+    .portada{
+        width: 80%;
+        height: 10%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .text1{
+        margin-top: 1rem;
+        width: 250px;
+    }
+
+    .container_4_1{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .text2{
+        margin: 0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    img{
+        padding: 10px;
+    }
+
+    .playing {
+    width: 90%;
+    height: 18rem;
+    margin: 0;
+    }
+
+    .container_5{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 1rem;
+    }
+
+    p{
+        padding: 1rem;
+    }
+
+    .container_6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .table_information{
+        text-align: center;
+        width: 300px;
+        border: 1px black solid;
+        height: 300px;
+    }
+
+    h3{
+        text-align: center;
+    }
+
+    .container_4{
+        flex-direction: column;
+    }
+
+    .container_7{
+        flex-direction: column;
+    }
+
+    .option{
+        margin-top:0.5rem;
+    }
+
+    .msg{
+        margin-top: 0.5rem;
+    }
+
+    .cont{
+        flex-direction: column;
+    }
+
+    .button{
+        margin:0;
+        margin-top:0.5rem;
+    }
+    .container_7_2{
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+    }
+
+    iframe{
+        margin: 0;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+
+}
