@@ -4,8 +4,9 @@ export default function AboutUs() {
   return (
     <div className='min-h-[84.9vh]'>
       <div className='flex flex-col justify-center items-center my-2'>
-        <p className='font-bold text-2xl text-slate-800'>About Us</p>
-        <p className='font-semibold text-xl text-slate-800'>Know Us</p>        </div>
+        <p className='font-bold text-2xl text-slate-800 my-2'>About Us</p>
+        <p className='font-semibold text-xl text-slate-800 my-2'>Know Us</p>        
+      </div>
       <div className='flex flex-col items-center'>
         <div className='flex my-4'>
           <img src="/guys.jpg" alt="Guys" className='w-[300px]' />
