@@ -1,1 +1,1 @@
-# Implementación de React a Mindy
+# Implementación de React y Redux a Mindy
