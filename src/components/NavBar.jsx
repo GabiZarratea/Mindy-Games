@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link as Anchor } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { apiUrl, endpoints } from '../utils/api.js';
 
 export default function NavBar() {
 
@@ -32,14 +33,22 @@ export default function NavBar() {
   const handleClickRegister = () => {
     Swal.fire({
       title: 'Welcome!',
-      html: `<form>
+      html: `<form id="registrationForm">
               <div>
                 <div class='m-2 flex flex-col items-start'>
                   <label class='text-fuchsia-400 p-2'>Usename: </label>
                   <input type='text' class='border-2 rounded-xl p-2 w-full' />
                 </div>
                 <div class='m-2 flex flex-col items-start'>
+                  <label class='text-fuchsia-400 p-2'>Email: </label>
+                  <input type='text' class='border-2 rounded-xl p-2 w-full' />
+                </div>
+                <div class='m-2 flex flex-col items-start'>
                   <label class='text-fuchsia-400 p-2'>Photo: </label>
+                  <input type='text' class='border-2 rounded-xl p-2 w-full' />
+                </div>
+                <div class='m-2 flex flex-col items-start'>
+                  <label class='text-fuchsia-400 p-2'>Location: </label>
                   <input type='text' class='border-2 rounded-xl p-2 w-full' />
                 </div>
                 <div class='m-2 flex flex-col items-start'>
@@ -59,6 +68,44 @@ export default function NavBar() {
       confirmButtonText: 'Register',
       showLoaderOnConfirm: true,
       confirmButtonColor: '#FF76E6',
+      preConfirm: () => {
+        const formData = new FormData(document.querySelector("#registrationForm"));
+        const userData = {
+          username: formData.get("username"),
+          email: formData.get("email"),
+          photo: formData.get("photo"),
+          location: formData.get("location"),
+          password: formData.get("password"),
+          confirmPassword: formData.get("confirmPassword")
+        };
+        return fetch(apiUrl + endpoints.register, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error al guardar los datos');
+          }
+          return response.json();
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            `Error: ${error}`
+          );
+        });
+      }
+    })
+    .then(result => {
+      if (result.value) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Datos guardados correctamente',
+          icon: 'success'
+        });
+      }
     })
   }
 
