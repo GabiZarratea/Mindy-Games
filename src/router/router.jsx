@@ -6,6 +6,7 @@ import Contact from '../pages/Contact'
 import MoreInformation from '../pages/MoreInformation'
 import Raffle from '../pages/Raffle'
 import Main from "../layouts/Main";
+import MyTournaments from "../pages/MyTournaments";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path:'/Raffle',
                 element: <Raffle />
+            },
+            {
+                path:'/MyTournaments',
+                element: <MyTournaments />
             },
         ]
     }
