@@ -30,10 +30,9 @@ function Register() {
         else{
             try {
                 const response = await axios.post(apiUrl + endpoints.register, formData)
-                console.log(response)
                 Swal.fire({
                     text: 'User created successfully!',
-                    icon: 'error',
+                    icon: 'success',
                     iconColor: '#FF76E6',
                     confirmButtonText: 'Ok',
                     confirmButtonColor: '#FF76E6'
@@ -69,12 +68,15 @@ function Register() {
     <div className='w-full flex justify-center items-center'>
         <form id="registrationForm" className='bg-white w-[35%] flex flex-col justify-center rounded-3xl m-6 absolute top-0 p-6'>
             <div className=''>
-                <div className='w-full flex justify-end'>
-                    <button className='flex justify-end me-10' onClick={() => setIsRegisterModalOpen(false)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-x text-fuchsia-400" viewBox="0 0 16 16">
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </button>
+                <div className='w-full flex justify-around ms-[20%]'>
+                    <h2 className='font-semibold text-slate-600 text-2xl'>Welcome!</h2>
+                    <div className='text-end'>
+                        <button className='flex justify-end me-10' onClick={() => setIsRegisterModalOpen(false)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" className="bi bi-x text-fuchsia-400" viewBox="0 0 16 16">
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <div className='m-2 flex flex-col items-start w-full pe-4'>
                     <label className='text-fuchsia-400 p-2'>Usename: </label>

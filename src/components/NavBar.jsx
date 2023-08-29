@@ -1,36 +1,11 @@
 import React, { useState } from 'react'
 import { Link as Anchor } from 'react-router-dom'
-import Swal from 'sweetalert2'
 import Register from './Register.jsx'
+import Login from './Login.jsx';
 
 export default function NavBar() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-
-  const handleClickLogin = (event) => {
-    event.preventDefault()
-    Swal.fire({
-      title: 'We are glad to see you again!',
-      html: `<form>
-              <div>
-                <div class='m-2'>
-                  <label class='text-fuchsia-400 p-2'>Usename: </label>
-                  <input type='text' class='border-2 rounded-xl p-2' />
-                </div>
-                <div class='m-2'>
-                  <label class='text-fuchsia-400 p-2'>Password: </label>
-                  <input type='password' class='border-2 rounded-xl p-2' />
-                </div>
-              </div>
-             </form>`,
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Login',
-      showLoaderOnConfirm: true,
-      confirmButtonColor: '#FF76E6',
-    })
-  }
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
     <div>
@@ -46,7 +21,7 @@ export default function NavBar() {
             <Anchor to={'/MyTournaments'} className='mx-4 font-semibold text-slate-800'> My Tournaments </Anchor>
           </div>
           <div className='w-[20%] flex justify-end'>
-            <button className='mx-4 font-semibold text-slate-800' onClick={handleClickLogin}>Login</button>
+            <button className='mx-4 font-semibold text-slate-800' onClick={() => setIsLoginModalOpen(true)}>Login</button>
             <p className='mx-4 font-semibold text-slate-800'>|</p>
             <button className='mx-4 font-semibold text-slate-800' onClick={() => setIsRegisterModalOpen(true)}>Register</button>
             <img src="/logo.png" alt="LogoMindy" className='h-[4vh]'/>
@@ -55,6 +30,9 @@ export default function NavBar() {
       </div>
       <div className={isRegisterModalOpen ? 'fixed top-0 left-0 w-full h-full bg-black bg-opacity-70' : ''}>
        { isRegisterModalOpen && <Register />}
+      </div>
+      <div className={isLoginModalOpen ? 'fixed top-0 left-0 w-full h-full bg-black bg-opacity-70' : ''}>
+       { isLoginModalOpen && <Login />}
       </div>
     </div>
   )
