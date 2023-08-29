@@ -4,4 +4,6 @@ export const api = axios.create({baseURL: apiUrl})
 export const endpoints = {
     register: "user/register",
     login: "user/login",
+    signout: "user/signout",
+    signintoken: "user/signintoken",
 }

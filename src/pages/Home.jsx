@@ -1,6 +1,8 @@
 import React from 'react'
+import isLoggedIn from '../components/isLoggedIn.js'
 
 export default function Home() {
+
   return (
     <div className='min-h-[84.9vh] flex flex-col items-center'>
       <div className='flex flex-col justify-center items-center my-2'>
