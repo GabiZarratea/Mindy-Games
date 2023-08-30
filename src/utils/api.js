@@ -6,4 +6,5 @@ export const endpoints = {
     login: "user/login",
     signout: "user/signout",
     signintoken: "user/signintoken",
+    tournaments: "tournaments",
 }
