@@ -32,7 +32,7 @@ export default function Raffle() {
   };
 
   return (
-    <div className='min-h-[84.9vh]'>
+    <div className='min-h-[84.9vh] flex flex-col'>
       <div className='flex flex-col justify-center items-center my-2'>
         <p className='font-bold text-2xl text-slate-800 my-2'>Raffle</p>
         <p className='font-semibold text-xl text-slate-800 my-2'>You can collaborate and register for one of our tournaments</p>

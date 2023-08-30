@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function MoreInformation() {
   return (
-    <div className='min-h-[84.9vh]'>
+    <div className='min-h-[84.9vh] flex flex-col'>
       <div className='flex flex-col justify-center items-center my-2'>
         <p className='font-bold text-2xl text-slate-800 my-2'>More Information</p>
         <p className='font-semibold text-xl text-slate-800 my-2'>Here you'll find the information about the tournaments</p>

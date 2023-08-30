@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AboutUs() {
   return (
-    <div className='min-h-[84.9vh]'>
+    <div className='min-h-[84.9vh] flex flex-col'>
       <div className='flex flex-col justify-center items-center my-2'>
         <p className='font-bold text-2xl text-slate-800 my-2'>About Us</p>
         <p className='font-semibold text-xl text-slate-800 my-2'>Know Us</p>        

@@ -1,5 +1,4 @@
 import React from 'react'
-import isLoggedIn from '../components/isLoggedIn.js'
 
 export default function Home() {
 
