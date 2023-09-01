@@ -1,9 +1,24 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Swal from 'sweetalert2';
+import { api, apiUrl, endpoints } from '../utils/api.js'
 
 export default function Raffle() {
     
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', chooseGame: '', chooseDate: '', paymentOption: '', message: '', acceptTerms: false });
+  const [tournaments, setTournaments] = useState([]);
+
+  const fetchTournaments = async () => {
+    try {
+      const response = await api.get(apiUrl + endpoints.tournaments)
+      setTournaments(response.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTournaments()
+  }, []);
 
   const handleClick = (event) => {
     event.preventDefault()
@@ -60,19 +75,19 @@ export default function Raffle() {
             <div>
               <label className='rounded-md flex flex-col my-1 font-semibold text-slate-800'>Choose Game</label>
               <select value={formData.chooseGame} name='chooseGame' onChange={handleChange} className='text-slate-700'>
-                <option value="">--Elija una opción--</option>
-                <option value="LOL">League of Legends</option>
-                <option value="Valorant">Valorant</option>
-                <option value="CS">Counter Strike</option>
+                <option value="">--Choose an option--</option>
+                {tournaments.map(tournament => (
+                    <option key={tournament._id} value={tournament.name_game}>{tournament.name_game}</option>
+                ))}
               </select>
             </div>
             <div>
               <label className='rounded-md flex flex-col my-1 font-semibold text-slate-800'>Choose Date</label>
               <select value={formData.chooseDate} name='chooseDate' onChange={handleChange} className='text-slate-700'>
-                <option value="">--Elija una opción--</option>
-                <option value="20/08">20/08</option>
-                <option value="12/10">12/10</option>
-                <option value="27/11">27/11</option>
+                <option value="">--Choose an option--</option>
+                {tournaments.map(tournament => (
+                  <option key={tournament._id} value={new Date(tournament.date_init).toLocaleDateString()}>{new Date(tournament.date_init).toLocaleDateString()}</option>
+                ))}
               </select>
             </div>
             <div>
