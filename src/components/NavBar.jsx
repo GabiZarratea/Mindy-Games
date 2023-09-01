@@ -9,8 +9,11 @@ import isLoggedIn from './isLoggedIn'
 
 export default function NavBar() {
 
-  let token = LS.get('token')
-
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [formData, setFormData] = useState({ username: '', email: '', photo: '', location: '', password: '' });
+  
   const username = useSelector((state) => state.user.user);
   const photo = useSelector((state) => state.user.photo);
 
@@ -19,60 +22,57 @@ export default function NavBar() {
   const navigate = useNavigate();
   const inputEmail = useRef('');
   const inputPassword = useRef('');
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [formData, setFormData] = useState({ username: '', email: '', photo: '', location: '', password: '' });
   
-  const handleClickLogin = async (event) =>{
-    event.preventDefault()
+  let token = LS.get('token')
+
+  const handleClickLogin = async (event) => {
+    event.preventDefault();
     const data = {
-        email: inputEmail.current.value,
-        password: inputPassword.current.value,
+      email: inputEmail.current.value,
+      password: inputPassword.current.value,
     };
 
     try {
-        const response = await api.post(apiUrl + endpoints.login, data);
-        
-        if (response.data.success) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            iconColor: '#FF76E6',
-            title: 'User signed in!',
-            showConfirmButton: false,
-            confirmButtonColor: '#FF76E6',
-            timer: 1500,
-          });
-  
-          const { username, photo, token } = response.data.response;
-  
-          LS.add('token', token)
-          LS.add('username', username)
-          LS.add('photo', photo)
-          dispatch(setUser(username))
-          dispatch(setPhoto(photo))
+      const response = await api.post(apiUrl + endpoints.login, data);
+      if (response.data.success) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          iconColor: '#FF76E6',
+          title: 'User signed in!',
+          showConfirmButton: false,
+          confirmButtonColor: '#FF76E6',
+          timer: 1500,
+        });
 
-        } else {
-          Swal.fire({
-            icon: 'error',
-            iconColor: '#FF76E6',
-            title: 'Oops...',
-            text: 'Failed to login!',
-          });
-        }
+        const { username, photo, token } = response.data.response;
 
-        setIsLoginModalOpen(false)
-
-      } catch (error) {
+        if (username && typeof username === 'string' && username.trim() !== '') {
+          LS.add('username', username);
+        }        
+        LS.add('token', token);
+        LS.add('photo', photo);
+        dispatch(setUser(username));
+        dispatch(setPhoto(photo));
+      } else {
         Swal.fire({
           icon: 'error',
           iconColor: '#FF76E6',
           title: 'Oops...',
-          text: error.message,
+          text: 'Failed to login!',
         });
       }
-}
+
+      setIsLoginModalOpen(false);
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        iconColor: '#FF76E6',
+        title: 'Oops...',
+        text: error.message,
+      });
+    }
+  };
 
 const handleClickRegister = async (event) =>{
   event.preventDefault()
@@ -207,9 +207,6 @@ useEffect(() => {
             <div className='w-[80%] flex justify-between items-center my-4'>
               <div className='flex'>
                 <Anchor to={'/'} className='mx-4 font-semibold text-slate-800'> Home </Anchor>
-                <Anchor to={'/BenefitsAndTips'} className='mx-4 font-semibold text-slate-800'> Benefits And Tips </Anchor>
-                <Anchor to={'/Raffle'} className='mx-4 font-semibold text-slate-800'> Raffle </Anchor>
-                <Anchor to={'/MyTournaments'} className='mx-4 font-semibold text-slate-800'> My Tournaments </Anchor>
                 <Anchor onClick={signout} className='mx-4 font-semibold text-slate-800'> Log Out </Anchor>
               </div>
               <div className='flex justify-end items-center'>
