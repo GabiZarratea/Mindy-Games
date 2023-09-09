@@ -256,7 +256,7 @@ useEffect(() => {
                       <input name="confirmPassword" type='password' className='border-2 rounded-xl p-2 w-full' value={confirmPassword} onChange={handleChange} />
                   </div>
                   <div className='flex p-2 w-full justify-center'>
-                      <button className='bg-fuchsia-400 p-2 font-semibold rounded-md m-2 text-white' onClick={handleClickRegister}>Register</button>
+                      <button className='bg-fuchsia-400 p-2 font-semibold rounded-md m-2 text-white' type='submit' onClick={handleClickRegister}>Register</button>
                       <button className='bg-slate-400 p-2 font-semibold rounded-md m-2 text-white' onClick={() => setIsRegisterModalOpen(false)}>Cancel</button>
                   </div>
               </div>
@@ -288,7 +288,7 @@ useEffect(() => {
                        <input name="password" type='password' className='border-2 rounded-xl p-2 w-full' ref={inputPassword}/>
                    </div>
                    <div className='flex p-2 w-full justify-center'>
-                       <button className='bg-fuchsia-400 p-2 font-semibold rounded-md m-2 text-white' onClick={handleClickLogin}>Login</button>
+                       <button className='bg-fuchsia-400 p-2 font-semibold rounded-md m-2 text-white' type='submit' onClick={handleClickLogin}>Login</button>
                        <button className='bg-slate-400 p-2 font-semibold rounded-md m-2 text-white' onClick={() => setIsLoginModalOpen(false)}>Cancel</button>
                    </div>
                </div>
