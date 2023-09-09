@@ -6,11 +6,16 @@ export default function Raffle() {
     
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', chooseGame: '', chooseDate: '', paymentOption: '', message: '', acceptTerms: false });
   const [tournaments, setTournaments] = useState([]);
+  const [availableGames, setAvailableGames] = useState([]);
+  const [availableDates, setAvailableDates] = useState([]);
 
   const fetchTournaments = async () => {
     try {
-      const response = await api.get(apiUrl + endpoints.tournaments)
-      setTournaments(response.data)
+      const response = await api.get(apiUrl + endpoints.tournaments);
+      setTournaments(response.data);
+
+      const uniqueGames = [...new Set(response.data.map((tournament) => tournament.name_game))];
+      setAvailableGames(uniqueGames);
     } catch (error) {
       console.log(error);
     }
@@ -39,11 +44,22 @@ export default function Raffle() {
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
-  
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+
+    if (name === 'chooseGame') {
+      const selectedGame = tournaments.find((tournament) => tournament.name_game === value);
+      const availableDates = selectedGame ? [new Date(selectedGame.date_init).toLocaleDateString()] : [];
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+        chooseDate: '',
+      }));
+      setAvailableDates(availableDates);
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === 'checkbox' ? checked : value,
+      }));
+    }
   };
 
   return (
@@ -75,9 +91,11 @@ export default function Raffle() {
             <div>
               <label className='rounded-md flex flex-col my-1 font-semibold text-slate-800'>Choose Game</label>
               <select value={formData.chooseGame} name='chooseGame' onChange={handleChange} className='text-slate-700'>
-                <option value="">--Choose an option--</option>
-                {tournaments.map(tournament => (
-                    <option key={tournament._id} value={tournament.name_game}>{tournament.name_game}</option>
+                <option value="">-- Choose an option --</option>
+                {availableGames.map((game) => (
+                  <option key={game} value={game}>
+                    {game}
+                  </option>
                 ))}
               </select>
             </div>
@@ -85,8 +103,10 @@ export default function Raffle() {
               <label className='rounded-md flex flex-col my-1 font-semibold text-slate-800'>Choose Date</label>
               <select value={formData.chooseDate} name='chooseDate' onChange={handleChange} className='text-slate-700'>
                 <option value="">--Choose an option--</option>
-                {tournaments.map(tournament => (
-                  <option key={tournament._id} value={new Date(tournament.date_init).toLocaleDateString()}>{new Date(tournament.date_init).toLocaleDateString()}</option>
+                {availableDates.map((date) => (
+                  <option key={date} value={date}>
+                    {date}
+                  </option>
                 ))}
               </select>
             </div>
