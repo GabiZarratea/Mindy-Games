@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api, apiUrl, endpoints } from '../utils/api.js'
 import { Link as Anchor } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import emailjs from 'emailjs-com'
 
 export default function MoreInformation() {
 
@@ -22,7 +23,11 @@ try {
         iconColor: '#FF76E6',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#FF76E6'
-    })
+    })    
+    const emailParams = {
+      to_email: formData.email,
+    }
+    await emailjs.send('service_9fqt4lk', 'template_tsgr4zl', emailParams, {public_key: '6d7CiFkc2rv80EwQE', private_key: 'G28XC7VJu3k3Z_cwjkKly'});
     setParticipeOpen(false)
 } 
 catch(error) {
